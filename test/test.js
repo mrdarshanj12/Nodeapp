@@ -7,9 +7,13 @@ describe('GET /', function() {
       .get('/nonexistentpage')
       .expect(404)
       .end(function(err, res) {
-        if (err) return done(err);
+        if (err) {
+          // If there's an error, log it and pass it to the done callback
+          console.error(err);
+          return done(err);
+        }
+        // If everything is fine, invoke the done callback
         done();
       });
   });
 });
-
